@@ -1,0 +1,38 @@
+.hero {
+    margin: 0 auto;
+    padding: 0;
+    padding-bottom: 60px;
+    max-height: 700px;
+    height: 100vh;
+
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+
+    background-image: url('/images/car-bcg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+
+    background-color: var(--gray-light);
+    color: var(--white);
+}
+
+@media screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx), screen and (min-device-pixel-ratio: 2) {
+    .hero {
+        background-image: url('/images/car-bcg-2x.jpg');
+    }
+}
+
+.title {
+    margin-bottom: 16px;
+    font-size: 60px;
+    line-height: 1.2;
+}
+
+.text {
+    margin-bottom: 40px;
+    font-size: 24px;
+    line-height: 1.3;
+}

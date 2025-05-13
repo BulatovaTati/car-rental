@@ -1,14 +1,15 @@
+import Container from '../Container/Container';
 import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
+
+import s from './Header.module.css';
 
 const Header = () => {
     return (
         <header className={s.header}>
-            <Container>
+            <Container modClass={s.headerContainer}>
                 <Logo />
-                <nav>
-                    <Navigation />
-                </nav>
+                <Navigation />
             </Container>
         </header>
     );

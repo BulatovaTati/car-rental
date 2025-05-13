@@ -2,9 +2,9 @@ import s from './NotFoundPage.module.css';
 
 const NotFoundPage = () => {
     return (
-        <div className={s.wrapper}>
+        <Container>
             <p>Woops, the page does not exist</p>
-        </div>
+        </Container>
     );
 };
 

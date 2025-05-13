@@ -1,0 +1,19 @@
+.button {
+    padding: 12px 88px;
+    min-width: 276px;
+    display: inline-block;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+
+    font-weight: 600;
+    font-family: inherit;
+    color: var(--white);
+    background-color: var(--button);
+    transition: background-color var(--time) var(--cubic);
+}
+
+.button:hover,
+.button:focus {
+    background-color: var(--button-hover);
+}

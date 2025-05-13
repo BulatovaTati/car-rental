@@ -1,7 +1,7 @@
 import s from './Section.module.css';
 
-const Section = ({ children }) => {
-    return <section className={s.section}>{children}</section>;
+const Section = ({ children, modClass }) => {
+    return <section className={`${s.section} ${modClass}`}>{children}</section>;
 };
 
 export default Section;
