@@ -1,19 +1,26 @@
 .carItem {
     position: relative;
-    width: calc((100% - 96px) / 4);
-    /* display: flex; */
-    /* flex-direction: column;
-    height: 424px; */
+
+    @media screen and (min-width: 768px) {
+        width: calc((100% - 32px) / 2);
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: calc((100% - 64px) / 3);
+    }
+
+    @media screen and (min-width: 1440px) {
+        width: calc((100% - 96px) / 4);
+    }
 }
 
 .image {
+    margin-bottom: 16px;
     border-radius: 14px;
     object-fit: cover;
 }
 
 .titleContainer {
-    flex-grow: 1;
-    margin-top: 16px;
     margin-bottom: 8px;
     display: flex;
     justify-content: space-between;
@@ -26,10 +33,10 @@
 }
 
 .model {
-    color: var(--light-blue);
+    color: var(--button);
 }
+
 .info {
-    flex-grow: 1;
     margin-bottom: 28px;
     display: flex;
     flex-direction: column;
@@ -42,6 +49,7 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 1.33;
+    text-transform: none;
     color: var(--gray);
 }
 
@@ -54,13 +62,13 @@
     border: none;
     border-radius: 12px;
     color: var(--white);
-    background-color: var(--light-blue);
+    background-color: var(--button);
     transition: background-color var(--time) var(--cubic);
-}
 
-.button:hover,
-.button:focus {
-    background-color: var(--blue);
+    &:hover,
+    &:focus {
+        background-color: var(--blue);
+    }
 }
 
 .buttonHeart {
@@ -72,6 +80,7 @@
     width: 16px;
     height: 16px;
 }
+
 .disabled {
     width: 20px;
     height: 20px;
@@ -80,11 +89,16 @@
 }
 
 .disabled:hover {
-    fill: var(--light-blue);
+    color: var(--button);
 }
 
 .active {
     width: 20px;
     height: 20px;
-    fill: var(--light-blue);
+    color: var(--button);
+}
+
+.readMoreBtn {
+    width: 100%;
+    text-align: center;
 }

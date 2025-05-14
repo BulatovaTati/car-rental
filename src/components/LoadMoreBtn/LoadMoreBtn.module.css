@@ -1,0 +1,17 @@
+.loadMoreBtn {
+    min-width: 156px;
+    padding: 12px 51px;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid var(--button);
+    border-radius: 12px;
+    background-color: transparent;
+    outline: none;
+    transition: background-color var(--time) var(--cubic), color var(--time) var(--cubic);
+
+    &:hover,
+    &:focus {
+        background-color: var(--button-hover);
+        color: var(--white);
+    }
+}

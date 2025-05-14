@@ -11,9 +11,9 @@
     color: var(--white);
     background-color: var(--button);
     transition: background-color var(--time) var(--cubic);
-}
 
-.button:hover,
-.button:focus {
-    background-color: var(--button-hover);
+    &:hover,
+    &:focus {
+        background-color: var(--button-hover);
+    }
 }

@@ -22,9 +22,7 @@ const carsSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(getAllCars.fulfilled, (state, { payload }) => {
-                console.log('payload: ', payload);
                 state.cars = payload.cars;
-
                 state.totalPages = payload.totalPages;
             })
             .addCase(getCarsBrands.fulfilled, (state, { payload }) => {

@@ -12,7 +12,7 @@ const CatalogCarItem = ({ car }) => {
 
     return (
         <li className={s.carItem}>
-            <img className={s.image} src={img} alt={`${brand} ${model}`} width="276" height="268" />
+            <img className={s.image} src={img} alt={`${brand} ${model}`} />
             <button type="button" className={s.buttonHeart}>
                 <IoMdHeartEmpty className={s.disabled} />
             </button>
@@ -31,7 +31,9 @@ const CatalogCarItem = ({ car }) => {
                     {type} | {mileage.toLocaleString('uk-UA')} km
                 </p>
             </div>
-            <CommunBtn to={`/catalog/${id}`}>Read more</CommunBtn>
+            <CommunBtn modClass={s.readMoreBtn} to={`/catalog/${id}`}>
+                Read more
+            </CommunBtn>
         </li>
     );
 };

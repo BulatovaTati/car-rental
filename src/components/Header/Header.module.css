@@ -1,7 +1,10 @@
 .header {
     border-bottom: 1px solid #f2f4f7;
-    padding: 0 120px;
     background: #f2f4f7;
+
+    @media screen and (min-width: 1280px) {
+        padding: 0 120px;
+    }
 }
 
 .headerContainer {
