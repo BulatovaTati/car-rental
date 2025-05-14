@@ -1,0 +1,90 @@
+.carItem {
+    position: relative;
+    width: calc((100% - 96px) / 4);
+    /* display: flex; */
+    /* flex-direction: column;
+    height: 424px; */
+}
+
+.image {
+    border-radius: 14px;
+    object-fit: cover;
+}
+
+.titleContainer {
+    flex-grow: 1;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+}
+
+.model {
+    color: var(--light-blue);
+}
+.info {
+    flex-grow: 1;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 4px;
+    min-height: 40px;
+}
+
+.infoText {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.33;
+    color: var(--gray);
+}
+
+.button {
+    margin-top: auto;
+    padding: 12px 97px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.25;
+    border: none;
+    border-radius: 12px;
+    color: var(--white);
+    background-color: var(--light-blue);
+    transition: background-color var(--time) var(--cubic);
+}
+
+.button:hover,
+.button:focus {
+    background-color: var(--blue);
+}
+
+.buttonHeart {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    background-color: transparent;
+    border: none;
+    width: 16px;
+    height: 16px;
+}
+.disabled {
+    width: 20px;
+    height: 20px;
+    transition: fill var(--time) var(--cubic);
+    fill: var(--white);
+}
+
+.disabled:hover {
+    fill: var(--light-blue);
+}
+
+.active {
+    width: 20px;
+    height: 20px;
+    fill: var(--light-blue);
+}
