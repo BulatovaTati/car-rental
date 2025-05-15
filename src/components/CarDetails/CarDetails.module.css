@@ -1,33 +1,39 @@
 .wrapper {
-    @media screen and (min-width: 768px) {
-    }
-
     @media screen and (min-width: 1280px) {
         display: flex;
         justify-content: space-between;
         gap: 72px;
-    }
-
-    @media screen and (min-width: 1440px) {
     }
 }
 
 .image {
     border-radius: 18px;
     margin-bottom: 40px;
+
+    @media screen and (min-width: 1280px) {
+        max-width: 568px;
+    }
+
+    @media screen and (min-width: 1440px) {
+        max-width: 640px;
+    }
 }
 
 .infoWrapper {
     @media screen and (min-width: 768px) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
     }
 
     @media screen and (min-width: 1280px) {
-        display: flex;
         flex-direction: column;
         justify-content: space-between;
-        gap: 110px;
+        gap: 80px;
     }
 
     @media screen and (min-width: 1440px) {
+        gap: 110px;
     }
 }

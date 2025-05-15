@@ -22,13 +22,16 @@ const carsSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(getAllCars.fulfilled, (state, { payload }) => {
+                state.isLoading = false;
                 state.cars = payload.cars;
                 state.totalPages = payload.totalPages;
             })
             .addCase(getCarsBrands.fulfilled, (state, { payload }) => {
+                state.isLoading = false;
                 state.brands = payload;
             })
             .addCase(getCarDetails.fulfilled, (state, { payload }) => {
+                state.isLoading = false;
                 state.details = payload;
             })
             .addMatcher(isAnyOf(getAllCars.pending, getCarsBrands.pending, getCarDetails.pending), state => {

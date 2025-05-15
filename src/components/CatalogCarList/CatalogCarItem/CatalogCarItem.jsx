@@ -28,7 +28,7 @@ const CatalogCarItem = ({ car }) => {
                     {addressParts.join(' | ')} | {rentalCompany} |
                 </p>
                 <p className={s.infoText}>
-                    {type} | {mileage.toLocaleString('uk-UA')} km
+                    {type.charAt(0).toUpperCase() + type.slice(1).toLowerCase()} | {mileage.toLocaleString('uk-UA')} km
                 </p>
             </div>
             <CommunBtn modClass={s.readMoreBtn} to={`/catalog/${id}`}>

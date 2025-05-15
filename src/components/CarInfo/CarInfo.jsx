@@ -9,7 +9,9 @@ const CarInfo = ({ car }) => {
                 <h2 className={s.title}>
                     {car.brand} {car.model}, {car.year}
                 </h2>
-                <p className={s.id}>Id: {car.id}</p>
+                <p className={s.id} title={car.id}>
+                    {`Id: ${car.id.slice(0, 4)}...`}
+                </p>
             </div>
             <div className={s.textWrapper}>
                 <div className={s.addressWrapper}>
