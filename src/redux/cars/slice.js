@@ -23,8 +23,13 @@ const carsSlice = createSlice({
         builder
             .addCase(getAllCars.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
-                state.cars = payload.cars;
                 state.totalPages = payload.totalPages;
+
+                if (state.page === 1) {
+                    state.cars = payload.cars;
+                } else {
+                    state.cars = [...state.cars, ...payload.cars];
+                }
             })
             .addCase(getCarsBrands.fulfilled, (state, { payload }) => {
                 state.isLoading = false;

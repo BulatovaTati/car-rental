@@ -14,8 +14,6 @@ const CatalogPage = () => {
     const currentPage = useSelector(selectPage);
     const isLoading = useSelector(selectIsLoading);
 
-    const error = useSelector(selectError);
-
     useEffect(() => {
         dispatch(getAllCars(currentPage));
     }, [dispatch, currentPage]);
@@ -23,6 +21,7 @@ const CatalogPage = () => {
     if (isLoading) {
         return <Loader />;
     }
+
     return (
         <Section>
             <Container>

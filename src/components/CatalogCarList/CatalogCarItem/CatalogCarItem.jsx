@@ -1,17 +1,17 @@
-import { useDispatch } from 'react-redux';
-import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
+import { forwardRef } from 'react';
+import { IoMdHeartEmpty } from 'react-icons/io';
 
 import CommunBtn from '../../CommunBtn/CommunBtn';
 
 import s from './CatalogCarItem.module.css';
 
-const CatalogCarItem = ({ car }) => {
+const CatalogCarItem = forwardRef(({ car }, ref) => {
     const { id, year, brand, model, type, img, rentalPrice, address, rentalCompany, mileage } = car;
 
     const addressParts = address.split(', ').slice(1);
 
     return (
-        <li className={s.carItem}>
+        <li className={s.carItem} ref={ref}>
             <img className={s.image} src={img} alt={`${brand} ${model}`} />
             <button type="button" className={s.buttonHeart}>
                 <IoMdHeartEmpty className={s.disabled} />
@@ -36,6 +36,6 @@ const CatalogCarItem = ({ car }) => {
             </CommunBtn>
         </li>
     );
-};
+});
 
 export default CatalogCarItem;
