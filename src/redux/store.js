@@ -3,10 +3,12 @@ import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, 
 import storage from 'redux-persist/lib/storage';
 
 import { carsReducer } from './cars/slice';
+import { filtersReducer } from './filters/slice';
 
 export const store = configureStore({
     reducer: {
         cars: carsReducer,
+        filters: filtersReducer,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({

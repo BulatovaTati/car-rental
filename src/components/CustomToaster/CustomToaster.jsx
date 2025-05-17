@@ -3,18 +3,18 @@ import { Toaster, toast } from 'react-hot-toast';
 const toastStyles = {
     success: {
         style: {
-            border: '3px solid #734aef',
+            border: '3px solid #0b44cd',
             padding: '10px',
             color: '#fbfbfb',
-            backgroundColor: 'rgba(255, 255, 255, 0.4)',
+            backgroundColor: '#3470ff',
         },
     },
     error: {
         style: {
             border: '3px solid #F00000',
             padding: '10px',
-            color: '#fbfbfb',
-            backgroundColor: 'rgba(255, 255, 255, 0.4)',
+            color: '#101828',
+            backgroundColor: '#fbfbfb',
         },
     },
 };

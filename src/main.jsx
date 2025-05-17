@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import Loader from './components/Loader/Loader';
 
 import { store } from './redux/store';
 import 'modern-normalize';
@@ -12,7 +13,7 @@ import App from './components/App';
 createRoot(document.getElementById('root')).render(
     <StrictMode>
         <Provider store={store}>
-            {/* <PersistGate persistor={persistor}> */}
+            {/* <PersistGate loading={<Loader />} persistor={persistor}> */}
             <BrowserRouter>
                 <App />
             </BrowserRouter>

@@ -1,13 +1,13 @@
 import Section from '../Section/Section';
 import Container from '../Container/Container';
 
-import s from './ErroMessage.module.css';
+import s from './ErrorMessage.module.css';
 
-const ErrorMessage = () => {
+const ErrorMessage = ({ message }) => {
     return (
         <Section>
             <Container>
-                <p className={s.errorMessage}>Stm went wrong, please try reloading the page</p>
+                <p className={s.errorMessage}>{message}</p>
             </Container>
         </Section>
     );

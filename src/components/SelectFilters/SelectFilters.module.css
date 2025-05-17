@@ -1,0 +1,73 @@
+.filtersForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 56px;
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    @media screen and (min-width: 1280px) {
+        align-items: end;
+    }
+}
+
+.label {
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.33;
+    color: var(--gray);
+}
+
+.mileageInputs {
+    display: flex;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #f8f8f8;
+}
+
+.mileageInputGroup {
+    max-width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+
+    background: var(--inputs);
+}
+
+.mileageInputGroup:first-child {
+    border-right: 1px solid var(--gray-light);
+}
+
+.mileageLabel {
+    margin-right: 4px;
+}
+
+.input {
+    width: 70px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.button {
+    min-width: 156px;
+    height: 44px;
+    font-weight: 600;
+    color: var(--white);
+    background-color: var(--button);
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    transition: background-color var(--time) var(--cubic);
+}
+
+.button:hover,
+.button:focus {
+    background-color: var(--button-hover);
+}

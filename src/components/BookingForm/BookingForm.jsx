@@ -28,12 +28,11 @@ const BookingForm = () => {
 
     const onSubmit = async data => {
         try {
-            showToast('success', 'Sending...');
             await new Promise(resolve => setTimeout(resolve, 1000));
             showToast('success', 'Form submitted successfully!');
             reset();
         } catch (e) {
-            showToast('error', e?.message || 'Network Error!');
+            showToast('error', 'Smt went wrong!');
         }
     };
 

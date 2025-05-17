@@ -3,20 +3,20 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://car-rental-api.goit.global';
 
-export const getAllCars = createAsyncThunk('getAllCars', async (page, thunkAPI) => {
+export const getAllCars = createAsyncThunk('getAllCars', async ({ brand, rentalPrice, minMileage, maxMileage, limit = 12, page = 1 }, thunkAPI) => {
     try {
-        const pageNumber = Number(page);
-
-        const { data } = await axios.get(`/cars?page=${pageNumber}&limit=12`);
+        const { data } = await axios.get('cars', {
+            params: { brand, rentalPrice, minMileage, maxMileage, limit, page },
+        });
         return data;
-    } catch (error) {
-        return thunkAPI.rejectWithValue(error.response?.data?.message || 'Failed to fetch cars');
+    } catch (e) {
+        return thunkAPI.rejectWithValue(e.message);
     }
 });
 
 export const getCarsBrands = createAsyncThunk('getCarsBrands', async (_, thunkAPI) => {
     try {
-        const { data } = await axios('brands');
+        const { data } = await axios.get('/brands');
         return data;
     } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
@@ -25,7 +25,7 @@ export const getCarsBrands = createAsyncThunk('getCarsBrands', async (_, thunkAP
 
 export const getCarDetails = createAsyncThunk('getCarDetails', async (id, thunkAPI) => {
     try {
-        const { data } = await axios(`cars/${id}`);
+        const { data } = await axios.get(`/cars/${id}`);
         return data;
     } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
