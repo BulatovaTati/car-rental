@@ -12,8 +12,6 @@ car, and book a rental.
 -   Ability to add cars to favorites, saved even after page reload
 -   Detailed car page with booking form
 -   Pagination with a "Load More" button to fetch more cars
--   Mileage displayed with spaces for thousands (e.g., "5 000 km")
--   Notification on successful booking
 
 ## Technologies Used
 
@@ -21,7 +19,6 @@ car, and book a rental.
 -   Redux for state management
 -   React Router for routing
 -   Axios for API requests
--   CSS library of your choice (e.g., styled-components, CSS modules, MUI)
 
 ## Pages and Routes
 
@@ -49,12 +46,6 @@ npm run build
 
 Uses the backend API documented here: [https://car-rental-api.goit.global/api-docs/](https://car-rental-api.goit.global/api-docs/) All filtering and pagination happen via backend requests.
 
-## Implementation Notes
-
--   Filters reset previous results to ensure fresh data
--   Favorites are stored in localStorage to persist between sessions
--   Pagination handled by backend, loaded with "Load More" button
--   Booking form submits to backend, with success notification
 
 ## About the Author
 
@@ -70,7 +61,3 @@ Let’s connect! I’m excited to collaborate, share insights, and contribute to
 ## Deployment
 
 The project is deployed at: [https://car-rental-gules-two.vercel.app/](https://car-rental-gules-two.vercel.app/)
-
----
-
-Would you like me to prepare this in markdown file format so you can copy it easily?
