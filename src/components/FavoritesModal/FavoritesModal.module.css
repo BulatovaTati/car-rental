@@ -1,0 +1,93 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background-color: rgba(52, 113, 255, 0.5);
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 20;
+    width: 280px;
+    max-height: 96%;
+    padding: 40px 20px;
+    border-radius: 5px;
+    background-color: var(--white);
+    outline: none;
+    transform: translate(-50%, -50%) scale(1);
+    overflow-y: scroll;
+    visibility: visible;
+
+    @media screen and (min-width: 768px) {
+        width: 704px;
+        padding: 40px 36px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: 806px;
+        gap: 25px;
+    }
+}
+
+.cancelBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.title {
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+}
+
+.favoritesList {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+
+    @media screen and (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: 1280px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media screen and (min-width: 1440px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.image {
+    margin-bottom: 16px;
+    border-radius: 14px;
+    object-fit: cover;
+}
+
+.titleContainer {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.model {
+    color: var(--button);
+}

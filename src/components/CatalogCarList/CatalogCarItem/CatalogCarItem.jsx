@@ -1,20 +1,30 @@
 import { forwardRef } from 'react';
-import { IoMdHeartEmpty } from 'react-icons/io';
+import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
+import { useDispatch, useSelector } from 'react-redux';
 
 import CommunBtn from '../../CommunBtn/CommunBtn';
+import CarInfo from './CarInfo/CarInfo';
+
+import { selectFavorites } from '../../../redux/favorites/selectors';
+import { toggleFavoriteCar } from '../../../redux/favorites/slice';
 
 import s from './CatalogCarItem.module.css';
 
 const CatalogCarItem = forwardRef(({ car }, ref) => {
-    const { id, year, brand, model, type, img, rentalPrice, address, rentalCompany, mileage } = car;
+    const favorites = useSelector(selectFavorites);
+    const dispatch = useDispatch();
 
-    const addressParts = address.split(', ').slice(1);
+    const { id, year, brand, model, img, rentalPrice } = car;
+
+    const handleIsFavorite = () => {
+        dispatch(toggleFavoriteCar(car));
+    };
 
     return (
         <li className={s.carItem} ref={ref}>
             <img className={s.image} src={img} alt={`${brand} ${model}`} />
-            <button type="button" className={s.buttonHeart}>
-                <IoMdHeartEmpty className={s.disabled} />
+            <button type="button" className={s.buttonHeart} onClick={handleIsFavorite}>
+                {favorites.some(favCar => favCar && favCar.id === id) ? <IoMdHeart className={s.active} /> : <IoMdHeartEmpty className={s.disabled} />}
             </button>
             <div className={s.titleContainer}>
                 <h2 className={s.title}>
@@ -22,15 +32,7 @@ const CatalogCarItem = forwardRef(({ car }, ref) => {
                 </h2>
                 <h2 className={s.title}>${rentalPrice}</h2>
             </div>
-
-            <div className={s.info}>
-                <p className={s.infoText}>
-                    {addressParts.join(' | ')} | {rentalCompany} |
-                </p>
-                <p className={s.infoText}>
-                    {type.charAt(0).toUpperCase() + type.slice(1).toLowerCase()} | {mileage.toLocaleString('uk-UA')} km
-                </p>
-            </div>
+            <CarInfo {...car} />
             <CommunBtn modClass={s.readMoreBtn} to={`/catalog/${id}`}>
                 Read more
             </CommunBtn>
