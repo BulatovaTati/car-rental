@@ -4,7 +4,6 @@ import Select from 'react-select';
 
 import NumericFormatInput from '../NumericFormatInput/NumericFormatInput';
 
-import { getAllCars } from '../../redux/cars/operations';
 import { selectCarsBrands } from '../../redux/cars/selectors';
 import { addFilters } from '../../redux/filters/slice';
 
@@ -34,16 +33,8 @@ const SelectFilters = () => {
     }));
 
     const onSubmit = data => {
+        console.log('data: ', data);
         dispatch(addFilters(data));
-
-        const params = {};
-
-        if (data.brand) params.brand = data.brand;
-        if (data.price) params.rentalPrice = data.price;
-        if (data.mileageFrom) params.minMileage = data.mileageFrom;
-        if (data.mileageTo) params.maxMileage = data.mileageTo;
-
-        dispatch(getAllCars(params));
     };
 
     return (

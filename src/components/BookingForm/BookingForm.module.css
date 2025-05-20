@@ -45,7 +45,7 @@
     border: none;
     outline: none;
     border-radius: 12px;
-    background-color: var(--gray-light);
+    background-color: var(--inputs);
 
     &::placeholder {
         font-weight: 500;
