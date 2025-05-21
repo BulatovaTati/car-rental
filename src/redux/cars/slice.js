@@ -18,6 +18,9 @@ const carsSlice = createSlice({
         nextPage(state) {
             state.page += 1;
         },
+        resetPage(state) {
+            state.page = 1;
+        },
     },
     extraReducers: builder => {
         builder
@@ -50,6 +53,6 @@ const carsSlice = createSlice({
     },
 });
 
-export const { nextPage } = carsSlice.actions;
+export const { nextPage, resetPage } = carsSlice.actions;
 
 export const carsReducer = carsSlice.reducer;

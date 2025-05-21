@@ -5,26 +5,31 @@ import Select from 'react-select';
 import NumericFormatInput from '../NumericFormatInput/NumericFormatInput';
 
 import { selectCarsBrands } from '../../redux/cars/selectors';
-import { addFilters } from '../../redux/filters/slice';
+import { addFilters, resetFilters } from '../../redux/filters/slice';
+import { selectFilters } from '../../redux/filters/selectors';
 
+import { customStylesBrand } from './customStylesBrand';
+import { customStylesPrice } from './customStylesPrice';
 import s from './SelectFilters.module.css';
-import { customStylesBrand } from './customStylesBrand.js';
-import { customStylesPrice } from './customStylesPrice.js';
 
 const SelectFilters = () => {
     const dispatch = useDispatch();
     const brands = useSelector(selectCarsBrands);
+    const filters = useSelector(selectFilters);
 
-    const { control, handleSubmit, watch } = useForm({
-        defaultValues: {
-            brand: '',
-            price: null,
-            mileageFrom: null,
-            mileageTo: null,
-        },
+    const { control, handleSubmit, watch, reset } = useForm({
+        defaultValues: filters,
     });
 
+    const handleClear = () => {
+        reset();
+        dispatch(resetFilters());
+    };
+
     const price = watch('price');
+    const formValues = watch();
+    const isDisabled = !formValues.brand && !formValues.price && !formValues.mileageFrom && !formValues.mileageTo;
+    const hasFilters = formValues.brand || formValues.price || formValues.mileageFrom || formValues.mileageTo;
 
     const brandOptions = brands?.map(brand => ({ label: brand, value: brand })) || [];
     const priceOptions = [30, 40, 50, 60, 70, 80, 90, 100].map(price => ({
@@ -33,7 +38,6 @@ const SelectFilters = () => {
     }));
 
     const onSubmit = data => {
-        console.log('data: ', data);
         dispatch(addFilters(data));
     };
 
@@ -49,10 +53,9 @@ const SelectFilters = () => {
                             {...field}
                             options={brandOptions}
                             placeholder="Choose a brand"
-                            isSearchable
                             styles={customStylesBrand}
+                            onChange={selected => field.onChange(selected?.value || null)}
                             value={brandOptions.find(option => option.value === field.value) || null}
-                            onChange={selected => field.onChange(selected?.value || '')}
                         />
                     )}
                 />
@@ -119,9 +122,16 @@ const SelectFilters = () => {
                     </div>
                 </div>
             </div>
-            <button type="submit" className={s.button}>
-                Search
-            </button>
+            <div className={s.btnContainer}>
+                <button type="submit" className={s.button} disabled={isDisabled}>
+                    Search
+                </button>
+                {hasFilters && (
+                    <button type="button" className={s.button} onClick={handleClear}>
+                        Clear
+                    </button>
+                )}
+            </div>
         </form>
     );
 };

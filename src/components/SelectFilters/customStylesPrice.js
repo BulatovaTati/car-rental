@@ -2,7 +2,7 @@ export const customStylesPrice = {
     control: base => ({
         ...base,
         borderRadius: '12px',
-        maxWidth: '196px',
+        width: '196px',
         height: '44px',
         background: '#f7f7f7',
         border: 'none',
@@ -13,7 +13,7 @@ export const customStylesPrice = {
         ...base,
         border: '1px solid #f7f7f7',
         borderRadius: '12px',
-        maxWidth: '196px',
+        width: '196px',
         maxHeight: '188px',
         boxShadow: '0 4px 36px 0 rgba(0, 0, 0, 0.02)',
         background: '#ffffff',

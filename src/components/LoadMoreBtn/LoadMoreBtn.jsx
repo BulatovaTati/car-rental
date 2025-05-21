@@ -7,6 +7,7 @@ import s from './LoadMoreBtn.module.css';
 const LoadMoreBtn = () => {
     const dispatch = useDispatch();
     const cars = useSelector(selectAllCars);
+
     const currentPage = useSelector(selectPage);
     const totalPages = useSelector(selectTotalPages);
 

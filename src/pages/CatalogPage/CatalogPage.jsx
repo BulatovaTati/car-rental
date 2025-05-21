@@ -11,8 +11,8 @@ import FavoritesModal from '../../components/FavoritesModal/FavoritesModal';
 
 import { selectIsLoading, selectPage } from '../../redux/cars/selectors';
 import { getAllCars, getCarsBrands } from '../../redux/cars/operations';
-import { resetFilters } from '../../redux/filters/slice';
 import { selectFilters } from '../../redux/filters/selectors';
+import { resetPage } from '../../redux/cars/slice';
 
 const CatalogPage = () => {
     const dispatch = useDispatch();
@@ -31,11 +31,11 @@ const CatalogPage = () => {
                 page: currentPage,
             })
         );
-    }, [dispatch, currentPage, JSON.stringify(filters)]);
+    }, [dispatch, filters, currentPage]);
 
     useEffect(() => {
-        dispatch(resetFilters());
-    }, [dispatch]);
+        dispatch(resetPage());
+    }, [dispatch, filters]);
 
     useEffect(() => {
         dispatch(getCarsBrands());
