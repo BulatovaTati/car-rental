@@ -70,6 +70,7 @@ const SelectFilters = () => {
                             {...field}
                             options={priceOptions}
                             styles={customStylesPrice}
+                            isClearable
                             getOptionLabel={option => option.label}
                             formatOptionLabel={option => (price ? `To $${option.value}` : option.label)}
                             value={priceOptions.find(option => option.value === field.value) || ''}
