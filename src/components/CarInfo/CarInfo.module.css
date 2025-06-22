@@ -10,18 +10,13 @@
         justify-content: space-between;
         gap: 16px;
     }
-
-    @media screen and (min-width: 1280px) {
-    }
-
-    @media screen and (min-width: 1440px) {
-    }
 }
 
 .title {
     font-size: 24px;
     line-height: 1.33;
     margin-bottom: 8px;
+    
     @media screen and (min-width: 768px) {
         margin-bottom: 0;
     }
@@ -59,8 +54,5 @@
 .description {
     @media screen and (min-width: 1280px) {
         max-width: 488px;
-    }
-
-    @media screen and (min-width: 1440px) {
     }
 }
