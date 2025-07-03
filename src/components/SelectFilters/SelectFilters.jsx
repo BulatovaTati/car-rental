@@ -58,7 +58,6 @@ const SelectFilters = () => {
                     options={priceOptions}
                     placeholder="Choose a price"
                     styles={customStylesPrice}
-                    isClearable
                     formatOptionLabel={option => (control._formValues.price ? `To $${option.value}` : option.label)}
                 />
             </div>

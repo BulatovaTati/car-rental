@@ -1,7 +1,7 @@
 import { Controller } from 'react-hook-form';
 import Select from 'react-select';
 
-const SelectController = ({ name, control, options, placeholder, styles, isClearable = true, formatOptionLabel = null }) => (
+const SelectController = ({ name, control, options, placeholder, styles, formatOptionLabel = null }) => (
     <Controller
         name={name}
         control={control}
@@ -11,7 +11,7 @@ const SelectController = ({ name, control, options, placeholder, styles, isClear
                 options={options}
                 placeholder={placeholder}
                 styles={styles}
-                isClearable={isClearable}
+                isClearable
                 formatOptionLabel={formatOptionLabel}
                 value={options.find(option => option.value === field.value) || null}
                 onChange={selected => field.onChange(selected ? selected.value : null)}

@@ -11,9 +11,8 @@ import { toggleFavoriteCar } from '../../../redux/favorites/slice';
 import s from './CatalogCarItem.module.css';
 
 const CatalogCarItem = forwardRef(({ car }, ref) => {
-    const favorites = useSelector(selectFavorites);
-
     const dispatch = useDispatch();
+    const favorites = useSelector(selectFavorites);
 
     const { id, year, brand, model, img, rentalPrice } = car;
 
