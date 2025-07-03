@@ -5,11 +5,10 @@ import Section from '../../components/Section/Section';
 import Container from '../../components/Container/Container';
 import CatalogCarList from '../../components/CatalogCarList/CatalogCarList';
 import SelectFilters from '../../components/SelectFilters/SelectFilters';
-import Loader from '../../components/Loader/Loader';
 import FavoritesButton from '../../components/FavoritesButton/FavoritesButton';
 import FavoritesModal from '../../components/FavoritesModal/FavoritesModal';
 
-import { selectIsLoading, selectPage } from '../../redux/cars/selectors';
+import { selectPage } from '../../redux/cars/selectors';
 import { getAllCars, getCarsBrands } from '../../redux/cars/operations';
 import { selectFilters } from '../../redux/filters/selectors';
 import { resetPage } from '../../redux/cars/slice';
@@ -18,7 +17,7 @@ const CatalogPage = () => {
     const dispatch = useDispatch();
     const currentPage = useSelector(selectPage);
     const filters = useSelector(selectFilters);
-    const isLoading = useSelector(selectIsLoading);
+
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
@@ -40,10 +39,6 @@ const CatalogPage = () => {
     useEffect(() => {
         dispatch(getCarsBrands());
     }, [dispatch]);
-
-    if (isLoading) {
-        return <Loader />;
-    }
 
     const handleOpenModal = () => setIsModalOpen(true);
     const handleCloseModal = () => setIsModalOpen(false);

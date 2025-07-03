@@ -3,17 +3,16 @@ import { useEffect, useRef } from 'react';
 
 import CatalogCarItem from './CatalogCarItem/CatalogCarItem';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
-import Loader from '../Loader/Loader';
+
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
-import { selectAllCars, selectError, selectIsLoading } from '../../redux/cars/selectors';
+import { selectAllCars, selectError } from '../../redux/cars/selectors';
 
 import s from './CatalogCarList.module.css';
 
 const CatalogCarList = () => {
     const cars = useSelector(selectAllCars);
 
-    const isLoading = useSelector(selectIsLoading);
     const error = useSelector(selectError);
     const firstCardRef = useRef(null);
 
@@ -21,15 +20,11 @@ const CatalogCarList = () => {
         if (cars.length > 12) {
             const { height: cardHeight } = firstCardRef.current.getBoundingClientRect();
             window.scrollBy({
-                top: cardHeight * 2,
+                top: cardHeight,
                 behavior: 'smooth',
             });
         }
     }, [cars]);
-
-    if (isLoading) {
-        return <Loader />;
-    }
 
     if (error) {
         return <ErrorMessage message="Stm went wrong, please try reloading the page" />;

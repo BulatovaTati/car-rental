@@ -1,10 +1,11 @@
+import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { useForm, Controller } from 'react-hook-form';
-import Select from 'react-select';
 
-import NumericFormatInput from '../NumericFormatInput/NumericFormatInput';
+import Loader from '../Loader/Loader';
+import SelectController from './SelectController/SelectController';
+import MileageInputController from './MileageInputController/MileageInputController';
 
-import { selectCarsBrands } from '../../redux/cars/selectors';
+import { selectCarsBrands, selectIsLoading } from '../../redux/cars/selectors';
 import { addFilters, resetFilters } from '../../redux/filters/slice';
 import { selectFilters } from '../../redux/filters/selectors';
 
@@ -16,8 +17,9 @@ const SelectFilters = () => {
     const dispatch = useDispatch();
     const brands = useSelector(selectCarsBrands);
     const filters = useSelector(selectFilters);
+    const isLoading = useSelector(selectIsLoading);
 
-    const { control, handleSubmit, watch, reset } = useForm({
+    const { control, handleSubmit, formState, reset } = useForm({
         defaultValues: filters,
     });
 
@@ -26,10 +28,9 @@ const SelectFilters = () => {
         dispatch(resetFilters());
     };
 
-    const price = watch('price');
-    const formValues = watch();
-    const isDisabled = !formValues.brand && !formValues.price && !formValues.mileageFrom && !formValues.mileageTo;
-    const hasFilters = formValues.brand || formValues.price || formValues.mileageFrom || formValues.mileageTo;
+    const { dirtyFields } = formState;
+    const isDisabled = Object.keys(dirtyFields).length === 0;
+    const hasFilters = !isDisabled;
 
     const brandOptions = brands?.map(brand => ({ label: brand, value: brand })) || [];
     const priceOptions = [30, 40, 50, 60, 70, 80, 90, 100].map(price => ({
@@ -37,47 +38,28 @@ const SelectFilters = () => {
         value: price,
     }));
 
-    const onSubmit = data => {
-        dispatch(addFilters(data));
-    };
+    const onSubmit = data => dispatch(addFilters(data));
+
+    if (isLoading) {
+        return <Loader />;
+    }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={s.filtersForm}>
             <div className={s.filterGroup}>
                 <label className={s.label}>Car brand</label>
-                <Controller
-                    name="brand"
-                    control={control}
-                    render={({ field }) => (
-                        <Select
-                            {...field}
-                            options={brandOptions}
-                            placeholder="Choose a brand"
-                            styles={customStylesBrand}
-                            onChange={selected => field.onChange(selected?.value || null)}
-                            value={brandOptions.find(option => option.value === field.value) || null}
-                        />
-                    )}
-                />
+                <SelectController name="brand" control={control} options={brandOptions} placeholder="Choose a brand" styles={customStylesBrand} />
             </div>
             <div className={s.filterGroup}>
                 <label className={s.label}>Price / 1 hour</label>
-                <Controller
+                <SelectController
                     name="price"
                     control={control}
-                    render={({ field }) => (
-                        <Select
-                            {...field}
-                            options={priceOptions}
-                            styles={customStylesPrice}
-                            isClearable
-                            getOptionLabel={option => option.label}
-                            formatOptionLabel={option => (price ? `To $${option.value}` : option.label)}
-                            value={priceOptions.find(option => option.value === field.value) || ''}
-                            placeholder="Choose a price"
-                            onChange={selected => field.onChange(selected?.value || '')}
-                        />
-                    )}
+                    options={priceOptions}
+                    placeholder="Choose a price"
+                    styles={customStylesPrice}
+                    isClearable
+                    formatOptionLabel={option => (control._formValues.price ? `To $${option.value}` : option.label)}
                 />
             </div>
             <div className={s.filterGroup}>
@@ -85,41 +67,11 @@ const SelectFilters = () => {
                 <div className={s.mileageInputs}>
                     <div className={s.mileageInputGroup}>
                         <span className={s.mileageLabel}>From</span>
-                        <Controller
-                            name="mileageFrom"
-                            control={control}
-                            render={({ field }) => (
-                                <NumericFormatInput
-                                    value={field.value}
-                                    onBlur={field.onBlur}
-                                    name={field.name}
-                                    thousandSeparator
-                                    className={s.input}
-                                    onValueChange={({ floatValue }) => {
-                                        field.onChange(floatValue ?? null);
-                                    }}
-                                />
-                            )}
-                        />
+                        <MileageInputController name="mileageFrom" control={control} className={s.input} />
                     </div>
                     <div className={s.mileageInputGroup}>
                         <span className={s.mileageLabel}>To</span>
-                        <Controller
-                            name="mileageTo"
-                            control={control}
-                            render={({ field }) => (
-                                <NumericFormatInput
-                                    value={field.value}
-                                    onBlur={field.onBlur}
-                                    name={field.name}
-                                    thousandSeparator
-                                    className={s.input}
-                                    onValueChange={({ floatValue }) => {
-                                        field.onChange(floatValue ?? null);
-                                    }}
-                                />
-                            )}
-                        />
+                        <MileageInputController name="mileageTo" control={control} className={s.input} />
                     </div>
                 </div>
             </div>

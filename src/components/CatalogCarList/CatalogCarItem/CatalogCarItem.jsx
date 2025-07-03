@@ -12,6 +12,7 @@ import s from './CatalogCarItem.module.css';
 
 const CatalogCarItem = forwardRef(({ car }, ref) => {
     const favorites = useSelector(selectFavorites);
+
     const dispatch = useDispatch();
 
     const { id, year, brand, model, img, rentalPrice } = car;
@@ -22,7 +23,7 @@ const CatalogCarItem = forwardRef(({ car }, ref) => {
 
     return (
         <li className={s.carItem} ref={ref}>
-            <img className={s.image} src={img} alt={`${brand} ${model}`} />
+            <img className={s.image} src={img} alt={`${brand} ${model}`} loading="lazy" />
             <button type="button" className={s.buttonHeart} onClick={handleIsFavorite}>
                 {favorites.some(favCar => favCar && favCar.id === id) ? <IoMdHeart className={s.active} /> : <IoMdHeartEmpty className={s.disabled} />}
             </button>
